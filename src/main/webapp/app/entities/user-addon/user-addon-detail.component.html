@@ -1,0 +1,92 @@
+
+<div *ngIf="userAddon">
+    <h2><span>User Addon</span> {{userAddon.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{userAddon.name}}</span>
+        </dd>
+        <dt><span>Username</span></dt>
+        <dd>
+            <span>{{userAddon.username}}</span>
+        </dd>
+        <dt><span>Password</span></dt>
+        <dd>
+            <span>{{userAddon.password}}</span>
+        </dd>
+        <dt><span>Email</span></dt>
+        <dd>
+            <span>{{userAddon.email}}</span>
+        </dd>
+        <dt><span>Activated</span></dt>
+        <dd>
+            <span>{{userAddon.activated}}</span>
+        </dd>
+        <dt><span>Parent User Id</span></dt>
+        <dd>
+            <span>{{userAddon.parentUserId}}</span>
+        </dd>
+        <dt><span>Security Password</span></dt>
+        <dd>
+            <span>{{userAddon.securityPassword}}</span>
+        </dd>
+        <dt><span>Authorized Mobile</span></dt>
+        <dd>
+            <span>{{userAddon.authorizedMobile}}</span>
+        </dd>
+        <dt><span>Secondary Mobile</span></dt>
+        <dd>
+            <span>{{userAddon.secondaryMobile}}</span>
+        </dd>
+        <dt><span>Acc Open Fee</span></dt>
+        <dd>
+            <span>{{userAddon.accOpenFee}}</span>
+        </dd>
+        <dt><span>Daily Rental</span></dt>
+        <dd>
+            <span>{{userAddon.dailyRental}}</span>
+        </dd>
+        <dt><span>Minimum Balance</span></dt>
+        <dd>
+            <span>{{userAddon.minimumBalance}}</span>
+        </dd>
+        <dt><span>Flat Commission</span></dt>
+        <dd>
+            <span>{{userAddon.flatCommission}}</span>
+        </dd>
+        <dt><span>Api Url</span></dt>
+        <dd>
+            <span>{{userAddon.apiUrl}}</span>
+        </dd>
+        <dt><span>Api Response Url</span></dt>
+        <dd>
+            <span>{{userAddon.apiResponseUrl}}</span>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+            {{userAddon.userLogin}}
+        </dd>
+        <dt><span>Commission Group</span></dt>
+        <dd>
+            <div *ngIf="userAddon.commissionGroupId">
+                <a [routerLink]="['/commission-group', userAddon.commissionGroupId]">{{userAddon.commissionGroupName}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'user-addon/'+ userAddon.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

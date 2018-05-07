@@ -1,0 +1,82 @@
+<div>
+    <h2>
+        <span>Operators</span>
+        <button class="btn btn-primary float-right jh-create-entity create-operator" [routerLink]="['/', { outlets: { popup: ['operator-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Operator
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="operators">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Enable</span></th>
+            <th><span>Name</span></th>
+            <th><span>Normal Code</span></th>
+            <th><span>Special Code</span></th>
+            <th><span>First Api</span></th>
+            <th><span>Second Api</span></th>
+            <th><span>Third Api</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let operator of operators ;trackBy: trackId">
+                <td><a [routerLink]="['../operator', operator.id ]">{{operator.id}}</a></td>
+                <td>{{operator.enable}}</td>
+                <td>{{operator.name}}</td>
+                <td>{{operator.normalCode}}</td>
+                <td>{{operator.specialCode}}</td>
+                <td>
+                    <div *ngIf="operator.firstApiId">
+                        <a [routerLink]="['../api', operator.firstApiId  ]" >{{operator.firstApiName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="operator.secondApiId">
+                        <a [routerLink]="['../api', operator.secondApiId  ]" >{{operator.secondApiName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="operator.thirdApiId">
+                        <a [routerLink]="['../api', operator.thirdApiId  ]" >{{operator.thirdApiName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../operator', operator.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'operator/'+ operator.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'operator/'+ operator.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

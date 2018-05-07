@@ -1,0 +1,176 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myUserAddonLabel">Create or edit a User Addon</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!userAddon.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="userAddon.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="userAddon.name" required maxlength="100"/>
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.maxlength">
+                   This field cannot be longer than 100 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_username">Username</label>
+            <input type="text" class="form-control" name="username" id="field_username"
+                [(ngModel)]="userAddon.username" required maxlength="50"/>
+            <div [hidden]="!(editForm.controls.username?.dirty && editForm.controls.username?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.username?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.username?.errors?.maxlength">
+                   This field cannot be longer than 50 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_password">Password</label>
+            <input type="text" class="form-control" name="password" id="field_password"
+                [(ngModel)]="userAddon.password" required maxlength="60"/>
+            <div [hidden]="!(editForm.controls.password?.dirty && editForm.controls.password?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.password?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.password?.errors?.maxlength">
+                   This field cannot be longer than 60 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                [(ngModel)]="userAddon.email" required/>
+            <div [hidden]="!(editForm.controls.email?.dirty && editForm.controls.email?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.email?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_activated">Activated</label>
+            <input type="checkbox" class="form-control" name="activated" id="field_activated"
+                [(ngModel)]="userAddon.activated" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_parentUserId">Parent User Id</label>
+            <input type="number" class="form-control" name="parentUserId" id="field_parentUserId"
+                [(ngModel)]="userAddon.parentUserId" required/>
+            <div [hidden]="!(editForm.controls.parentUserId?.dirty && editForm.controls.parentUserId?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.parentUserId?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.parentUserId?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Profiles</label>
+            <select class="form-control" name="securityPassword" [(ngModel)]="userAddon.securityPassword">
+                <option *ngFor="let authority of authorities" [value]="authority">{{authority}}</option>
+            </select>
+        </div>
+        <!--<div class="form-group">-->
+            <!--<label class="form-control-label" for="field_securityPassword">Security Password</label>-->
+            <!--<input type="text" class="form-control" name="securityPassword" id="field_securityPassword"-->
+                <!--[(ngModel)]="userAddon.securityPassword" />-->
+        <!--</div>-->
+        <div class="form-group">
+            <label class="form-control-label" for="field_authorizedMobile">Authorized Mobile</label>
+            <input type="number" class="form-control" name="authorizedMobile" id="field_authorizedMobile"
+                [(ngModel)]="userAddon.authorizedMobile" required/>
+            <div [hidden]="!(editForm.controls.authorizedMobile?.dirty && editForm.controls.authorizedMobile?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.authorizedMobile?.errors?.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.authorizedMobile?.errors?.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_secondaryMobile">Secondary Mobile</label>
+            <input type="number" class="form-control" name="secondaryMobile" id="field_secondaryMobile"
+                [(ngModel)]="userAddon.secondaryMobile" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_accOpenFee">Acc Open Fee</label>
+            <input type="number" class="form-control" name="accOpenFee" id="field_accOpenFee"
+                [(ngModel)]="userAddon.accOpenFee" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dailyRental">Daily Rental</label>
+            <input type="number" class="form-control" name="dailyRental" id="field_dailyRental"
+                [(ngModel)]="userAddon.dailyRental" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_minimumBalance">Minimum Balance</label>
+            <input type="number" class="form-control" name="minimumBalance" id="field_minimumBalance"
+                [(ngModel)]="userAddon.minimumBalance" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_flatCommission">Flat Commission</label>
+            <input type="number" class="form-control" name="flatCommission" id="field_flatCommission"
+                [(ngModel)]="userAddon.flatCommission" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_apiUrl">Api Url</label>
+            <input type="text" class="form-control" name="apiUrl" id="field_apiUrl"
+                [(ngModel)]="userAddon.apiUrl" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_apiResponseUrl">Api Response Url</label>
+            <input type="text" class="form-control" name="apiResponseUrl" id="field_apiResponseUrl"
+                [(ngModel)]="userAddon.apiResponseUrl" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="userAddon.userId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_commissionGroup">Commission Group</label>
+            <select class="form-control" id="field_commissionGroup" name="commissionGroup" [(ngModel)]="userAddon.commissionGroupId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="commissionGroupOption.id" *ngFor="let commissionGroupOption of commissiongroups; trackBy: trackCommissionGroupById">{{commissionGroupOption.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

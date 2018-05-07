@@ -42,6 +42,10 @@ public class CacheConfiguration {
             cm.createCache(com.sbox.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.sbox.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.sbox.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.sbox.domain.Api.class.getName(), jcacheConfiguration);
+            cm.createCache(com.sbox.domain.Operator.class.getName(), jcacheConfiguration);
+            cm.createCache(com.sbox.domain.CommissionGroup.class.getName(), jcacheConfiguration);
+            cm.createCache(com.sbox.domain.UserAddon.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

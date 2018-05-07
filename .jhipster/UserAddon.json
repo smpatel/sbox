@@ -1,0 +1,111 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "userAddon"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "commissionGroup",
+            "otherEntityName": "commissionGroup",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "username",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "password",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 60
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "activated",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "parentUserId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "securityPassword",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "authorizedMobile",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "secondaryMobile",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "accOpenFee",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "dailyRental",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "minimumBalance",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "flatCommission",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "apiUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "apiResponseUrl",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180506223619",
+    "entityTableName": "user_addon",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false
+}

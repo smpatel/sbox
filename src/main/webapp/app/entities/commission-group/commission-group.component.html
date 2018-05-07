@@ -1,0 +1,70 @@
+<div>
+    <h2>
+        <span>Commission Groups</span>
+        <button class="btn btn-primary float-right jh-create-entity create-commission-group" [routerLink]="['/', { outlets: { popup: ['commission-group-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Commission Group
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="commissionGroups">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Name</span></th>
+            <th><span>Description</span></th>
+            <th><span>Commission</span></th>
+            <th><span>Authority</span></th>
+            <th><span>Operator</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let commissionGroup of commissionGroups ;trackBy: trackId">
+                <td><a [routerLink]="['../commission-group', commissionGroup.id ]">{{commissionGroup.id}}</a></td>
+                <td>{{commissionGroup.name}}</td>
+                <td>{{commissionGroup.description}}</td>
+                <td>{{commissionGroup.commission}}</td>
+                <td>{{commissionGroup.authority}}</td>
+                <td>
+                    <div *ngIf="commissionGroup.operatorId">
+                        <a [routerLink]="['../operator', commissionGroup.operatorId  ]" >{{commissionGroup.operatorName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../commission-group', commissionGroup.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'commission-group/'+ commissionGroup.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'commission-group/'+ commissionGroup.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

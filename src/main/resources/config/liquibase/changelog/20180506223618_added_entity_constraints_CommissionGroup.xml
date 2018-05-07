@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity CommissionGroup.
+    -->
+    <changeSet id="20180506223618-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="operator_id"
+                                 baseTableName="commission_group"
+                                 constraintName="fk_commission_group_operator_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="operator"/>
+
+    </changeSet>
+</databaseChangeLog>

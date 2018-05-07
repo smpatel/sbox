@@ -1,0 +1,72 @@
+<div>
+    <h2>
+        <span>Apis</span>
+        <button class="btn btn-primary float-right jh-create-entity create-api" [routerLink]="['/', { outlets: { popup: ['api-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Api
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="apis">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Enable</span></th>
+            <th><span>Name</span></th>
+            <th><span>Recharge Url</span></th>
+            <th><span>Balance Url</span></th>
+            <th><span>Status Url</span></th>
+            <th><span>Success Code</span></th>
+            <th><span>Fail Code</span></th>
+            <th><span>Api Commission</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let api of apis ;trackBy: trackId">
+                <td><a [routerLink]="['../api', api.id ]">{{api.id}}</a></td>
+                <td>{{api.enable}}</td>
+                <td>{{api.name}}</td>
+                <td>{{api.rechargeUrl}}</td>
+                <td>{{api.balanceUrl}}</td>
+                <td>{{api.statusUrl}}</td>
+                <td>{{api.successCode}}</td>
+                <td>{{api.failCode}}</td>
+                <td>{{api.apiCommission}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../api', api.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'api/'+ api.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'api/'+ api.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

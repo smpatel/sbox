@@ -1,0 +1,56 @@
+
+<div *ngIf="operator">
+    <h2><span>Operator</span> {{operator.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Enable</span></dt>
+        <dd>
+            <span>{{operator.enable}}</span>
+        </dd>
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{operator.name}}</span>
+        </dd>
+        <dt><span>Normal Code</span></dt>
+        <dd>
+            <span>{{operator.normalCode}}</span>
+        </dd>
+        <dt><span>Special Code</span></dt>
+        <dd>
+            <span>{{operator.specialCode}}</span>
+        </dd>
+        <dt><span>First Api</span></dt>
+        <dd>
+            <div *ngIf="operator.firstApiId">
+                <a [routerLink]="['/api', operator.firstApiId]">{{operator.firstApiName}}</a>
+            </div>
+        </dd>
+        <dt><span>Second Api</span></dt>
+        <dd>
+            <div *ngIf="operator.secondApiId">
+                <a [routerLink]="['/api', operator.secondApiId]">{{operator.secondApiName}}</a>
+            </div>
+        </dd>
+        <dt><span>Third Api</span></dt>
+        <dd>
+            <div *ngIf="operator.thirdApiId">
+                <a [routerLink]="['/api', operator.thirdApiId]">{{operator.thirdApiName}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'operator/'+ operator.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

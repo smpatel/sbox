@@ -1,0 +1,50 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "enable",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "rechargeUrl",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "balanceUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "statusUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "successCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "failCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "apiCommission",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20180506223616",
+    "entityTableName": "api",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}
